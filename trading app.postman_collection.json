@@ -1,0 +1,729 @@
+{
+	"info": {
+		"_postman_id": "ab289326-0bf8-4cff-af7e-8f21e14c399b",
+		"name": "trading app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36504212"
+	},
+	"item": [
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Ghanshyam\",\r\n    \"email\":\"ghan@gmail.com\",\r\n    \"password\":\"12345\",\r\n    \"mobile\":\"0000000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"pd@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "coin service",
+			"item": [
+				{
+					"name": "get coin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/coins/details/bitcoin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"coins",
+								"details",
+								"bitcoin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find coin by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/coins/details/bitcoin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"coins",
+								"details",
+								"bitcoin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "market chart data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/coins/bitcoin/chart?days=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"coins",
+								"bitcoin",
+								"chart"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get top 50 coins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/coins/top50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"coins",
+								"top50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trending coin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/coins/treading",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"coins",
+								"treading"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "watchlist service",
+			"item": [
+				{
+					"name": "users watchlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/watchlist/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"watchlist",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTo watch list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/watchlist/add/coin/bitcoin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"watchlist",
+								"add",
+								"coin",
+								"bitcoin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wallet service",
+			"item": [
+				{
+					"name": "user wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/wallet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/payment/RAZORPAY/amount/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"payment",
+								"RAZORPAY",
+								"amount",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deposit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/wallet/deposit?order_id=1&payment_id=pay_OTvJgZ4uSt5pUt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"wallet",
+								"deposit"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "1"
+								},
+								{
+									"key": "payment_id",
+									"value": "pay_OTvJgZ4uSt5pUt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer wallet to wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{SUMAN_JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 30000,\r\n    \"purpose\": \"friend return gift\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/api/wallet/1/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"wallet",
+								"1",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get wallet transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Service",
+			"item": [
+				{
+					"name": "pay order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"coinId\":\"bitcoin\",\r\n    \"quantity\":\"0.00001\",\r\n    \"orderType\":\"BUY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/api/orders/pay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"orders",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "portfolio Service",
+			"item": [
+				{
+					"name": "get all asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/asset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"asset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment details",
+			"item": [
+				{
+					"name": "get users payment details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/api/payment-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"payment-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add payment details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\":\"111111111111\",\r\n    \"accountHolderName\":\"PRASANTA DEBNATH\",\r\n    \"ifsc\": \"ICIC00012\",\r\n    \"bankName\":\"ICICI Bank\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5464/api/payment-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"payment-details"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "withdrawal",
+			"item": [
+				{
+					"name": "withdrawal request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/withdrawal/500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"withdrawal",
+								"500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user withdrawal history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5464/api/withdrawal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5464",
+							"path": [
+								"api",
+								"withdrawal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
